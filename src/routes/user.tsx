@@ -3,7 +3,7 @@ import {StyleSheet, Text, View, SafeAreaView, ScrollView} from 'react-native';
 
 import api from '../config/api';
 
-import UserInterface from '../interfaces/Users';
+import UserInterface from '../interfaces/User';
 
 const User = () => {
   const [users, setUsers] = useState<UserInterface[]>([]);
