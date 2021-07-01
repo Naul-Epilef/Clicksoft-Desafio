@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Text} from 'react-native';
+import {StyleSheet, Text, View, SafeAreaView, ScrollView} from 'react-native';
 
 import api from '../config/api';
 
@@ -19,17 +19,27 @@ const User = () => {
       });
   }, []);
 
-  const list = users.map(user => {
-    <>
-      <Text>user.id: {user.id}</Text>
-      <Text>user.name: {user.name}</Text>
-      <Text>user.username: {user.username}</Text>
-      <Text>user.email: {user.email}</Text>
-      <Text>user.website: {user.website}</Text>
-    </>;
-  });
-
-  return <Text>list</Text>;
+  return (
+    <SafeAreaView key="General">
+      <ScrollView key="SubGeneral">
+        {users.map(user => (
+          <View key={'View' + user.id} style={styles.container}>
+            <Text key={user.id}>{user.id}</Text>
+            <Text key={user.name}>{user.name}</Text>
+            <Text key={user.username}>{user.username}</Text>
+            <Text key={user.email}>{user.email}</Text>
+            <Text key={user.website}>{user.website}</Text>
+          </View>
+        ))}
+      </ScrollView>
+    </SafeAreaView>
+  );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    paddingBottom: 20,
+  },
+});
 
 export default User;
